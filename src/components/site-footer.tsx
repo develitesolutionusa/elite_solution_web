@@ -38,12 +38,12 @@ export function CtaBanner() {
         </div>
         <div className="btns">
           <MagButton>
-            <Link className="btn gold" href="/contact">
+            <Link className="btn gold mag" href="/contact">
               Book a free consultation
             </Link>
           </MagButton>
           <MagButton>
-            <a className="btn ghost" href={site.phoneHref}>
+            <a className="btn ghost mag" href={site.phoneHref}>
               Call now
             </a>
           </MagButton>

@@ -1,32 +1,50 @@
 "use client";
 
 import {
+  cloneElement,
+  isValidElement,
   useEffect,
   useRef,
   type CSSProperties,
+  type ReactElement,
   type ReactNode,
+  type Ref,
 } from "react";
 
 function reducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+function mergeRefs<T>(...refs: Array<Ref<T> | undefined>) {
+  return (value: T | null) => {
+    for (const ref of refs) {
+      if (!ref) continue;
+      if (typeof ref === "function") ref(value);
+      else (ref as { current: T | null }).current = value;
+    }
+  };
+}
+
+type MagChildProps = {
+  className?: string;
+  ref?: Ref<HTMLElement>;
+};
+
+/** Attaches magnetic hover motion. Pass `mag` in the child's className yourself. */
 export function MagButton({
   children,
-  className = "",
 }: {
-  children: ReactNode;
-  className?: string;
+  children: ReactElement<MagChildProps>;
 }) {
-  const ref = useRef<HTMLSpanElement>(null);
+  const localRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = localRef.current;
     if (!el || reducedMotion()) return;
 
     const onMove = (e: MouseEvent) => {
       const r = el.getBoundingClientRect();
-      el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.22}px,${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
+      el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px,${(e.clientY - r.top - r.height / 2) * 0.22}px)`;
     };
     const onLeave = () => {
       el.style.transform = "";
@@ -39,15 +57,11 @@ export function MagButton({
     };
   }, []);
 
-  return (
-    <span
-      ref={ref}
-      className={`mag ${className}`.trim()}
-      style={{ display: "inline-block" }}
-    >
-      {children}
-    </span>
-  );
+  if (!isValidElement(children)) return children;
+
+  return cloneElement(children, {
+    ref: mergeRefs(localRef, children.props.ref) as never,
+  });
 }
 
 export function TiltCard({

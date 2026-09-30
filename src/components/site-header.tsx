@@ -46,7 +46,7 @@ export function SiteHeader() {
                 <MagButton key={item.href}>
                   <Link
                     href={item.href}
-                    className="call"
+                    className="call mag"
                     aria-current={current ? "page" : undefined}
                   >
                     {item.label}

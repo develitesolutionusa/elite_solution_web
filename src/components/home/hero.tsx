@@ -202,12 +202,12 @@ export function HomeHero() {
           <p className="lead enter e2">{site.tagline}</p>
           <div className="btns enter e3">
             <MagButton>
-              <Link className="btn gold" href="/contact">
+              <Link className="btn gold mag" href="/contact">
                 Book a free consultation
               </Link>
             </MagButton>
             <MagButton>
-              <Link className="btn ghost" href="/portfolio">
+              <Link className="btn ghost mag" href="/portfolio">
                 See our work
               </Link>
             </MagButton>

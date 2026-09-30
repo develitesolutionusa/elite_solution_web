@@ -136,7 +136,11 @@ export function PortfolioBrowser() {
             <div className="cp">
               <strong>{active.name}</strong>
               <MagButton>
-                <button type="button" onClick={() => setActive(null)}>
+                <button
+                  type="button"
+                  className="mag"
+                  onClick={() => setActive(null)}
+                >
                   Close
                 </button>
               </MagButton>

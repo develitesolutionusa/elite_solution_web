@@ -81,7 +81,8 @@ h1,h2,h3{font-family:var(--head);line-height:1.12;margin:0}
 .btn.ghost:hover{background:var(--blue);border-color:var(--blue)}
 .btn.blue{background:var(--blue);color:#fff}
 .btn.blue:hover{background:var(--navy)}
-.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btns>.btn,.btns>.mag{flex:0 0 auto}
 
 /* dark hero base */
 .dk{background:var(--deep);color:#fff;position:relative;overflow:hidden;isolation:isolate}

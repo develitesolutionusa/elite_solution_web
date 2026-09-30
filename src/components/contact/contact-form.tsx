@@ -82,7 +82,7 @@ export function ContactForm() {
               onChange={(e) => setMessage(e.target.value)}
             />
             <MagButton>
-              <button className="btn blue" type="submit">
+              <button className="btn blue mag" type="submit">
                 Send message
               </button>
             </MagButton>
