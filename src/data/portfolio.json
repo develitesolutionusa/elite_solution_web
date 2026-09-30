@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Deccan Delights",
+    "alt": "Deccan Delights logo, gold arch frame on a maroon panel",
+    "bg": "#3f5771",
+    "fit": "cover",
+    "src": "/logos/deccan-delights.png",
+    "category": "logo"
+  },
+  {
+    "name": "Hussain Catering",
+    "alt": "Hussain Catering logo, green and gold monogram",
+    "bg": "#d0ae4a",
+    "fit": "contain",
+    "src": "/logos/hussain-catering.png",
+    "category": "logo"
+  },
+  {
+    "name": "Burger Buzz",
+    "alt": "Burger Buzz logo, black wordmark with a crown",
+    "bg": "#ffffff",
+    "fit": "contain",
+    "src": "/logos/burger-buzz.png",
+    "category": "logo"
+  },
+  {
+    "name": "Butt Karahi",
+    "alt": "Butt Karahi logo, cartoon chef holding a flaming karahi",
+    "bg": "#150c0b",
+    "fit": "cover",
+    "src": "/logos/butt-karahi.png",
+    "category": "logo"
+  }
+]
