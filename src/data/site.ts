@@ -55,12 +55,6 @@ export const processSteps = [
   },
 ] as const;
 
-export const stats = [
-  { value: 10, label: "Services under one roof" },
-  { value: 2, label: "Divisions: financial and non-financial" },
-  { value: 1, label: "Team and one point of contact" },
-] as const;
-
 export const pillars = [
   {
     icon: "cfo" as const,

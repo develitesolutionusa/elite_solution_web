@@ -4,65 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/reveal";
 import { ServiceGrid } from "@/components/service-card";
 import { financialServices, nonFinancialServices } from "@/data/services";
-import { stats } from "@/data/site";
-
-export function StatsSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [started, setStarted] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setStarted(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.3 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  return (
-    <div className="stats" ref={ref}>
-      <div className="w">
-        {stats.map((s, i) => (
-          <Reveal key={s.label} delay={`${i * 0.12}s`} className="st">
-            <div className="n">
-              <CountUp to={s.value} active={started} />
-            </div>
-            <p>{s.label}</p>
-          </Reveal>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function CountUp({ to, active }: { to: number; active: boolean }) {
-  const [n, setN] = useState(0);
-  useEffect(() => {
-    if (!active) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setN(to);
-      return;
-    }
-    const start = performance.now();
-    const dur = 1200;
-    let raf = 0;
-    const frame = (t: number) => {
-      const p = Math.min(1, (t - start) / dur);
-      setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
-      if (p < 1) raf = requestAnimationFrame(frame);
-    };
-    raf = requestAnimationFrame(frame);
-    return () => cancelAnimationFrame(raf);
-  }, [active, to]);
-  return <span>{n}</span>;
-}
 
 export function ServiceTabs() {
   const [group, setGroup] = useState<"fin" | "non">("fin");
@@ -84,13 +25,15 @@ export function ServiceTabs() {
   const items = group === "fin" ? financialServices : nonFinancialServices;
 
   return (
-    <div className="sec">
-      <div className="w">
-        <Reveal as="h2">What we do</Reveal>
+    <div className="sec what-do-sec">
+      <div className="w what-do">
+        <Reveal as="h2" className="what-do-title">
+          What we do
+        </Reveal>
         <Reveal as="p" className="sub">
           Two service groups, one team. Use them together or separately.
         </Reveal>
-        <Reveal>
+        <div className="tabs-wrap">
           <div className="tabs" role="tablist" ref={tabsRef}>
             <span className="ind" ref={indRef} />
             <button
@@ -110,7 +53,7 @@ export function ServiceTabs() {
               Non-financial
             </button>
           </div>
-        </Reveal>
+        </div>
         <ServiceGrid items={items} columns={group === "fin" ? 4 : 3} />
       </div>
     </div>
@@ -129,7 +72,7 @@ export function ProcessTimeline() {
       const r = tl.getBoundingClientRect();
       const p = Math.max(
         0,
-        Math.min(1, (window.innerHeight * 0.7 - r.top) / r.height),
+        Math.min(1, (window.innerHeight * 0.75 - r.top) / (r.height * 0.9)),
       );
       tl.style.setProperty("--p", String(p));
       steps.forEach((s) => {
@@ -150,9 +93,9 @@ export function ProcessTimeline() {
   return (
     <div className="sec alt">
       <div className="w how">
-        <div className="stick">
+        <div className="how-head">
           <Reveal as="h2">How it works</Reveal>
-          <Reveal as="p" className="sub" style={{ margin: 0 }}>
+          <Reveal as="p" className="sub">
             A simple start, with no obligation.
           </Reveal>
         </div>
@@ -161,20 +104,20 @@ export function ProcessTimeline() {
             <i />
           </div>
           <div className="tl-step" data-t=".05">
-            <span className="dot" />
+            <span className="step-badge">Step 1</span>
             <h3>Tell us what you need</h3>
             <p>
               Send a message or call. Describe your business and what you want
               done.
             </p>
           </div>
-          <div className="tl-step" data-t=".45">
-            <span className="dot" />
+          <div className="tl-step" data-t=".4">
+            <span className="step-badge">Step 2</span>
             <h3>Get a plan and a quote</h3>
             <p>We reply with the scope, the timeline and the price.</p>
           </div>
-          <div className="tl-step" data-t=".85">
-            <span className="dot" />
+          <div className="tl-step" data-t=".75">
+            <span className="step-badge">Step 3</span>
             <h3>We deliver and support</h3>
             <p>
               Your work is completed and we stay available for changes and
