@@ -1,60 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { MagButton, SpotSurface } from "@/components/interactions";
-import { Icon } from "@/components/icons";
-import { EsRunners } from "@/components/home/es-runners";
 import Link from "next/link";
-import { heroWords, site } from "@/data/site";
-
-function Typewriter() {
-  const ref = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el.textContent = "accounting and design";
-      return;
-    }
-
-    let wi = 0;
-    let ci = 0;
-    let del = false;
-    let timer: ReturnType<typeof setTimeout>;
-
-    const tick = () => {
-      const w = heroWords[wi];
-      let t = 85;
-      el.textContent = w.slice(0, ci);
-      if (!del && ci < w.length) ci++;
-      else if (!del) {
-        del = true;
-        t = 1500;
-      } else if (ci > 0) {
-        ci--;
-        t = 40;
-      } else {
-        del = false;
-        wi = (wi + 1) % heroWords.length;
-        t = 320;
-      }
-      timer = setTimeout(tick, t);
-    };
-
-    timer = setTimeout(tick, 600);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <span className="rotline">
-      <span className="grad" ref={ref}>
-        accounting
-      </span>
-      <span className="caret" />
-    </span>
-  );
-}
+import { MagButton, SpotSurface } from "@/components/interactions";
+import { Typewriter } from "@/components/typewriter";
+import { site } from "@/data/site";
 
 function ParticleNet() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -186,8 +136,43 @@ function ParticleNet() {
 }
 
 export function HomeHero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
+    const play = () => {
+      void video.play().catch(() => {});
+    };
+    play();
+    const onVis = () => {
+      if (document.hidden) video.pause();
+      else play();
+    };
+    document.addEventListener("visibilitychange", onVis);
+    return () => document.removeEventListener("visibilitychange", onVis);
+  }, []);
+
   return (
     <SpotSurface className="dk hero" id="hero">
+      <div className="hero-bg" aria-hidden="true">
+        <video
+          ref={videoRef}
+          className="hero-bg-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/hero-bg.jpg"
+        >
+          <source src="/videos/hero-bg-scrub.mp4?v=4" type="video/mp4" />
+        </video>
+      </div>
       <div className="orbw" aria-hidden="true">
         <div className="orb o1" />
         <div className="orb o2" />
@@ -195,9 +180,10 @@ export function HomeHero() {
       </div>
       <ParticleNet />
       <div className="w hero-in">
-        <div>
+        <div className="hero-copy">
           <h1 className="enter e1">
-            Your business, powered by <Typewriter />
+            <span className="hero-lead">Your business, powered by</span>{" "}
+            <Typewriter />
           </h1>
           <p className="lead enter e2">{site.tagline}</p>
           <div className="btns enter e3">
@@ -212,47 +198,6 @@ export function HomeHero() {
               </Link>
             </MagButton>
           </div>
-        </div>
-        <div className="vis enter e4" aria-hidden="true">
-          <div className="vis-geo">
-            <svg viewBox="0 0 400 400">
-              <g fill="none">
-                <path
-                  className="d a"
-                  d="M200 20 380 200 200 380 20 200Z"
-                  stroke="#395DA0"
-                  strokeWidth="2"
-                />
-                <path
-                  className="d b"
-                  d="M200 70 330 200 200 330 70 200Z"
-                  stroke="#7FA1E6"
-                  strokeWidth="2"
-                />
-                <path
-                  className="d a"
-                  d="M200 120 280 200 200 280 120 200Z"
-                  stroke="#fff"
-                  strokeWidth="2"
-                  opacity=".85"
-                />
-                <path d="M200 165 235 200 200 235 165 200Z" fill="#C9A227" />
-              </g>
-            </svg>
-            <div className="chip c1">
-              <Icon name="calc" />
-              Bookkeeping
-            </div>
-            <div className="chip c2">
-              <Icon name="web" />
-              Websites
-            </div>
-            <div className="chip c3">
-              <Icon name="seo" />
-              SEO
-            </div>
-          </div>
-          <EsRunners />
         </div>
       </div>
       <div className="scrollcue" aria-hidden="true" />

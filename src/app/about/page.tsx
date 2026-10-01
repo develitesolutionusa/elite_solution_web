@@ -37,7 +37,7 @@ export default function AboutPage() {
             </Reveal>
             <Reveal className="btns" style={{ marginTop: 26 }}>
               <MagButton>
-                <Link className="btn blue mag" href="/contact">
+                <Link className="btn gold mag" href="/contact">
                   Talk to us
                 </Link>
               </MagButton>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Figtree } from "next/font/google";
+import { Black_Ops_One, Bricolage_Grotesque, Figtree } from "next/font/google";
 import { CtaBanner, SiteFooter } from "@/components/site-footer";
 import { PageLoader } from "@/components/page-loader";
 import { ScrollProgress } from "@/components/scroll-progress";
@@ -17,6 +17,12 @@ const body = Figtree({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+const heroDisplay = Black_Ops_One({
+  variable: "--font-hero",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +45,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${head.variable} ${body.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${head.variable} ${body.variable} ${heroDisplay.variable} h-full`}
+    >
       <body className="min-h-full flex flex-col">
         <PageLoader />
         <ScrollProgress />

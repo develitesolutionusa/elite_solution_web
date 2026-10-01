@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { MagButton } from "@/components/interactions";
 import { Reveal } from "@/components/reveal";
 import { portfolio } from "@/data/portfolio";
 import { services } from "@/data/services";
@@ -59,9 +60,11 @@ export function LogoMarquee() {
         </div>
       </div>
       <div className="w brands-more">
-        <Link className="more" href="/portfolio">
-          View the full portfolio
-        </Link>
+        <MagButton>
+          <Link className="btn gold mag more" href="/portfolio">
+            View the full portfolio
+          </Link>
+        </MagButton>
       </div>
     </div>
   );

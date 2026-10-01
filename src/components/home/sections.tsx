@@ -54,7 +54,7 @@ export function ServiceTabs() {
             </button>
           </div>
         </div>
-        <ServiceGrid items={items} columns={group === "fin" ? 4 : 3} />
+        <ServiceGrid items={items} columns={3} />
       </div>
     </div>
   );

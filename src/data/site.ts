@@ -37,6 +37,15 @@ export const heroWords = [
   "SEO",
 ] as const;
 
+export const servicesHeroWords = [
+  "accounting",
+  "tax & payroll",
+  "websites Dev",
+  "branding & design",
+  "marketing & SEO",
+  "Digital Growth",
+] as const;
+
 export const processSteps = [
   {
     threshold: 0.05,

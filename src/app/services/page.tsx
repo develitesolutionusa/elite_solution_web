@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
+import Link from "next/link";
+import { MagButton } from "@/components/interactions";
+import { ServicesHero } from "@/components/services-hero";
 import { ServiceGrid } from "@/components/service-card";
 import { Reveal } from "@/components/reveal";
 import {
@@ -16,26 +18,65 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        title="Services for every stage of your business"
-        subtitle="Financial and non-financial work, handled by one team."
-      />
-      <div className="sec">
+      <ServicesHero />
+
+      <div className="sec services-block" id="financial">
         <div className="w">
-          <Reveal as="h2">Financial services</Reveal>
-          <Reveal as="p" className="sub">
-            The numbers side of your business.
-          </Reveal>
-          <ServiceGrid items={financialServices} columns={4} />
+          <div className="services-block-head">
+            <div>
+              <h2 className="services-block-title">Financial services</h2>
+              <p className="sub">
+                The numbers side — accurate books, tax, payroll and senior
+                finance guidance.
+              </p>
+            </div>
+            <Link className="services-block-link" href="/services/financial">
+              View all details
+            </Link>
+          </div>
+          <ServiceGrid items={financialServices} columns={3} />
         </div>
       </div>
-      <div className="sec alt">
+
+      <div className="sec alt services-block" id="non-financial">
         <div className="w">
-          <Reveal as="h2">Non-financial services</Reveal>
+          <div className="services-block-head">
+            <div>
+              <h2 className="services-block-title">Non-financial services</h2>
+              <p className="sub">
+                The brand and marketing side — websites, design, SEO and
+                campaigns that bring customers in.
+              </p>
+            </div>
+            <Link
+              className="services-block-link"
+              href="/services/non-financial"
+            >
+              View all details
+            </Link>
+          </div>
+          <ServiceGrid items={nonFinancialServices} columns={3} />
+        </div>
+      </div>
+
+      <div className="sec services-cta">
+        <div className="w services-cta-in">
+          <Reveal as="h2">Not sure where to start?</Reveal>
           <Reveal as="p" className="sub">
-            The brand and marketing side of your business.
+            Tell us what you need. We reply with a clear plan and a quote.
           </Reveal>
-          <ServiceGrid items={nonFinancialServices} />
+          <Reveal className="btns">
+            <MagButton>
+              <Link className="btn gold mag" href="/contact">
+                Book a free consultation
+              </Link>
+            </MagButton>
+            <MagButton>
+              <Link className="btn blue mag" href="/portfolio">
+                See our work
+              </Link>
+            </MagButton>
+          </Reveal>
         </div>
       </div>
     </>
