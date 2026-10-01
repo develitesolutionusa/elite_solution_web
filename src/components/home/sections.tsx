@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { MagButton } from "@/components/interactions";
 import { Reveal } from "@/components/reveal";
 import { ServiceGrid } from "@/components/service-card";
 import { financialServices, nonFinancialServices } from "@/data/services";
@@ -22,7 +24,15 @@ export function ServiceTabs() {
     ind.style.transform = `translateX(${active.offsetLeft}px)`;
   }, [group]);
 
-  const items = group === "fin" ? financialServices : nonFinancialServices;
+  const items =
+    group === "fin"
+      ? financialServices.filter((s) => s.slug !== "cfo-services")
+      : nonFinancialServices.filter(
+          (s) =>
+            s.slug !== "seo-services" &&
+            s.slug !== "email-marketing" &&
+            s.slug !== "help-line-services",
+        );
 
   return (
     <div className="sec what-do-sec">
@@ -55,6 +65,22 @@ export function ServiceTabs() {
           </div>
         </div>
         <ServiceGrid items={items} columns={3} />
+        <Reveal className="what-do-more">
+          <MagButton>
+            <Link
+              className="btn gold mag more"
+              href={
+                group === "fin"
+                  ? "/services/financial"
+                  : "/services/non-financial"
+              }
+            >
+              {group === "fin"
+                ? "View Financial Services"
+                : "View Non-financial Services"}
+            </Link>
+          </MagButton>
+        </Reveal>
       </div>
     </div>
   );
