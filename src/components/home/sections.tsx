@@ -26,7 +26,9 @@ export function ServiceTabs() {
 
   const items =
     group === "fin"
-      ? financialServices.filter((s) => s.slug !== "cfo-services")
+      ? financialServices.filter(
+          (s) => s.slug !== "cfo-services" && s.slug !== "audit-and-review",
+        )
       : nonFinancialServices.filter(
           (s) =>
             s.slug !== "seo-services" &&
@@ -71,8 +73,8 @@ export function ServiceTabs() {
               className="btn gold mag more"
               href={
                 group === "fin"
-                  ? "/services/financial"
-                  : "/services/non-financial"
+                  ? "/services#financial"
+                  : "/services#non-financial"
               }
             >
               {group === "fin"

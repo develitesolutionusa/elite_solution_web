@@ -28,13 +28,6 @@ export default function ServicesPage() {
             guidance.
           </p>
           <ServiceGrid items={financialServices} columns={3} />
-          <Reveal className="services-block-more">
-            <MagButton>
-              <Link className="btn gold mag more" href="/services/financial">
-                View Financial Services
-              </Link>
-            </MagButton>
-          </Reveal>
         </div>
       </div>
 
@@ -46,16 +39,6 @@ export default function ServicesPage() {
             that bring customers in.
           </p>
           <ServiceGrid items={nonFinancialServices} columns={3} />
-          <Reveal className="services-block-more">
-            <MagButton>
-              <Link
-                className="btn gold mag more"
-                href="/services/non-financial"
-              >
-                View Non-financial Services
-              </Link>
-            </MagButton>
-          </Reveal>
         </div>
       </div>
 

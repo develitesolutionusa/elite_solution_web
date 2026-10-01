@@ -27,6 +27,14 @@ const paths: Record<ServiceIcon, ReactNode> = {
       <path d="M15 7h3v3" />
     </>
   ),
+  audit: (
+    <>
+      <path d="M6 3h9l4 4v14H6z" />
+      <path d="M15 3v4h4M9 12h6M9 16h4" />
+      <circle cx="16.5" cy="16.5" r="3.5" />
+      <path d="M19 19l2.5 2.5" />
+    </>
+  ),
   web: (
     <>
       <rect x="3" y="4" width="18" height="16" rx="2" />

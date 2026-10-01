@@ -36,10 +36,10 @@ export function ServicesHero() {
             and tax to websites, branding and growth.
           </p>
           <div className="services-hero-ctas enter e3 page-enter">
-            <a className="services-hero-cta" href="/services/financial">
+            <a className="services-hero-cta" href="/services#financial">
               Financial
             </a>
-            <a className="services-hero-cta" href="/services/non-financial">
+            <a className="services-hero-cta" href="/services#non-financial">
               Non-financial
             </a>
           </div>

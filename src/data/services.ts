@@ -3,6 +3,7 @@ export type ServiceIcon =
   | "tax"
   | "pay"
   | "cfo"
+  | "audit"
   | "web"
   | "gfx"
   | "mkt"
@@ -97,7 +98,7 @@ export const services: Service[] = [
       "Fewer surprises at tax time",
       "Books ready for loans, investors or sale",
     ],
-    image: "/images/service-accounting.jpg",
+    image: "/images/acct-cover-hero.jpg",
   },
   {
     group: "fin",
@@ -164,6 +165,28 @@ export const services: Service[] = [
       "Confidence in the numbers behind decisions",
     ],
     image: "/images/service-cfo.jpg",
+  },
+  {
+    group: "fin",
+    slug: "audit-and-review",
+    icon: "audit",
+    name: "Audit & Review",
+    description:
+      "Independent review of your books and controls so errors are caught early and reports stay trustworthy.",
+    summary:
+      "We review your financial records, processes and reporting so you can trust the numbers — and fix gaps before they become problems.",
+    includes: [
+      "Review of books, ledgers and key account reconciliations",
+      "Spot-checks for errors, duplicates and missing records",
+      "Assessment of basic controls and documentation",
+      "Clear findings report with recommended fixes",
+    ],
+    outcomes: [
+      "Greater confidence in your financial reports",
+      "Issues found before tax season or a lender review",
+      "A practical list of improvements to follow",
+    ],
+    image: "/images/service-audit.jpg",
   },
   {
     group: "non",
@@ -331,6 +354,14 @@ export function getOtherServiceGroup(group: ServiceGroup) {
 export function serviceHref(service: Service) {
   const group = serviceGroups.find((g) => g.id === service.group)!;
   return `/services/${group.slug}/${service.slug}`;
+}
+
+export function serviceGroupHref(group: ServiceGroupMeta | ServiceGroup) {
+  const meta =
+    typeof group === "string"
+      ? serviceGroups.find((g) => g.id === group)!
+      : group;
+  return `/services#${meta.slug}`;
 }
 
 export const portfolioCategories = [

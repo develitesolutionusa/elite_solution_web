@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import Image from "next/image";
 import { SpotSurface } from "@/components/interactions";
 
@@ -9,11 +9,15 @@ export function PageHero({
   subtitle,
   imageSrc,
   videoSrc,
+  actions,
+  align = "left",
 }: {
   title: string;
   subtitle?: string;
   imageSrc?: string;
   videoSrc?: string;
+  actions?: ReactNode;
+  align?: "left" | "center";
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const hasMedia = Boolean(imageSrc || videoSrc);
@@ -71,10 +75,13 @@ export function PageHero({
         <div className="orb o1" />
         <div className="orb o2" />
       </div>
-      <div className="w phero-in">
+      <div className={`w phero-in${align === "center" ? " center" : ""}`}>
         <h1 className="enter page-enter">{title}</h1>
         {subtitle ? (
           <p className="enter e2 page-enter">{subtitle}</p>
+        ) : null}
+        {actions ? (
+          <div className="btns phero-actions enter e3 page-enter">{actions}</div>
         ) : null}
       </div>
     </SpotSurface>

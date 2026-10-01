@@ -13,12 +13,14 @@ export function Reveal({
   delay,
   style,
   as: Tag = "div",
+  from = "up",
 }: {
   children: ReactNode;
   className?: string;
   delay?: string;
   style?: CSSProperties;
   as?: "div" | "article" | "aside" | "li" | "p" | "h2" | "h3";
+  from?: "up" | "left" | "right";
 }) {
   const ref = useRef<HTMLElement | null>(null);
 
@@ -50,10 +52,12 @@ export function Reveal({
     ...(delay ? ({ "--d": delay } as CSSProperties) : null),
   };
 
+  const fromClass = from === "up" ? "" : ` rv-${from}`;
+
   return (
     <Tag
       ref={ref as never}
-      className={`rv ${className}`.trim()}
+      className={`rv${fromClass} ${className}`.trim()}
       style={Object.keys(merged).length ? merged : undefined}
     >
       {children}
