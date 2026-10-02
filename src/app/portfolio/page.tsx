@@ -1,21 +1,12 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
-import { PortfolioBrowser } from "@/components/portfolio/portfolio-browser";
+import { PortfolioStudioPage } from "@/components/portfolio/portfolio-studio-page";
 
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "Browse brands and businesses we have built logos, websites, marketing and financial systems for.",
+    "Explore recent Elite Solutions USA projects across web development, apps, UI/UX, e-commerce, and branding.",
 };
 
 export default function PortfolioPage() {
-  return (
-    <>
-      <PageHero
-        title="Work we have delivered"
-        subtitle="Browse the brands and businesses we have built logos, websites, marketing and financial systems for."
-      />
-      <PortfolioBrowser />
-    </>
-  );
+  return <PortfolioStudioPage />;
 }

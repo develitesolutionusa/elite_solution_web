@@ -1,0 +1,137 @@
+export const pricingPage = {
+  hero: {
+    eyebrow: "Pricing & Plans",
+    titleBefore: "Affordable Pricing for",
+    titleAccent: "Tailored Solutions",
+    lead: "Explore our transparent and competitive pricing plans designed to meet your unique financial and business needs.",
+    highlights: [
+      { icon: "fees", label: "Transparent Pricing" },
+      { icon: "plans", label: "Tailored Solutions" },
+      { icon: "support", label: "Dedicated Support" },
+    ],
+    image: "/images/pricing-hero-devices.jpg",
+  },
+  discovery: {
+    eyebrow: "Get Started",
+    title: "Book a Complimentary 2-Part Discovery Call",
+    lead: "A clear, no-pressure process so we understand your goals before we recommend a plan.",
+    ctaLabel: "Get Started Now",
+    ctaHref: "/contact",
+    steps: [
+      {
+        num: "01",
+        title: "1st Call: Get acquainted & discover ways we can help",
+        body: "If we're a fit, we'll request some information and schedule a 2nd call.",
+        image: "/images/pricing-discovery-acquainted.jpg",
+      },
+      {
+        num: "02",
+        title: "2nd Call: Review financial profile & discuss long-term goals",
+        body: "You decide whether you'd like to continue the process.",
+        image: "/images/pricing-discovery-goals.jpg",
+      },
+    ],
+  },
+  financial: {
+    eyebrow: "Financial Services",
+    title: "We'll Build Your Financial Plan",
+    lead: "Based on what we heard from you in our discovery calls, we'll build a financial plan that will be the map for your entire financial journey.",
+    badge: "All in One",
+    panelTitle: "Comprehensive Financial Planning",
+    panelLead:
+      "One coordinated plan covering goals, cash flow, investments, tax, retirement, and more.",
+    ctaLabel: "Get Started Now",
+    ctaHref: "/contact",
+    features: [
+      "Financial Goal Development & Probability Analysis",
+      "Financial Organization / Balance Sheet Preparation",
+      "Cash Flow Planning and Budgeting / Debt Management",
+      "Investment Management Review & Recommendations",
+      "Insurance Evaluation & Recommendations",
+      "Risk Tolerance Determination",
+      "College Funding Plan",
+      "Estate Planning Roadmap",
+      "Advanced Tax Planning Strategies",
+      "Small-Business Retirement Planning / Qual. Plan Design & Management",
+      "Stock Options & Equity Compensation Planning",
+      "Real Estate Analysis & Recommendations",
+      "Alternative Investment Opportunities",
+      "Retirement Distribution Strategy",
+      "Social Security Timing and Evaluation",
+      "Roth Conversion Assessment",
+    ],
+  },
+  nonFinancial: {
+    eyebrow: "Non-Financial Services",
+    title: "All in One Non-Financial Services",
+    lead: "We provide a complete suite of digital and operational services that help your business grow and perform at its best.",
+    ctaLabel: "Get Started Now",
+    ctaHref: "/contact",
+    items: [
+      {
+        icon: "seo",
+        title: "SEO Optimization",
+        body: "Advanced SEO solutions that improve visibility. Higher ranking. Better reach.",
+      },
+      {
+        icon: "web",
+        title: "Web Development",
+        body: "Modern website design and development. Fast performance. Strong user experience.",
+      },
+      {
+        icon: "social",
+        title: "Social Media Handling",
+        body: "Full management of social platforms. Consistent posting. Better engagement. Strong brand presence.",
+      },
+      {
+        icon: "call",
+        title: "Call Center Services",
+        body: "Professional customer support. Inbound and outbound calling. Reliable service for your clients.",
+      },
+      {
+        icon: "content",
+        title: "Content Writing",
+        body: "High quality content for websites, blogs, and social media. Clear, simple, and effective communication.",
+      },
+      {
+        icon: "design",
+        title: "Graphic Designing",
+        body: "Brand identity, logos, and marketing visuals. Clean creative work that strengthens your presence.",
+      },
+    ],
+  },
+  faq: {
+    eyebrow: "Frequently Asked Questions",
+    title: "Got Questions? We're Here to Help.",
+    aside: {
+      title: "Need a Custom Plan?",
+      body: "Book a complimentary discovery call and we'll build a package around your financial and business goals.",
+      ctaLabel: "Contact Us",
+      ctaHref: "/contact",
+      image: "/images/pricing-faq-support.jpg",
+    },
+    items: [
+      {
+        q: "How does pricing work?",
+        a: "Pricing is tailored after our complimentary 2-part discovery calls, so your plan matches your financial profile and long-term goals — with transparent recommendations and no pressure.",
+      },
+      {
+        q: "What happens on the discovery calls?",
+        a: "On the first call we get acquainted and explore how we can help. If we're a fit, we schedule a second call to review your financial profile and discuss long-term goals. You decide whether to continue.",
+      },
+      {
+        q: "Do you offer both financial and non-financial services?",
+        a: "Yes. We build all-in-one financial plans and also provide digital services including SEO, web development, social media handling, call center support, and content writing.",
+      },
+      {
+        q: "Can I start with only one service area?",
+        a: "Absolutely. Many clients begin with a focused need — accounting, tax, web, or marketing — and expand as their business grows.",
+      },
+    ],
+  },
+} as const;
+
+export type PricingHighlightIcon =
+  (typeof pricingPage.hero.highlights)[number]["icon"];
+export type PricingNonFinIcon =
+  (typeof pricingPage.nonFinancial.items)[number]["icon"];

@@ -39,6 +39,8 @@ export const nav: {
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/about", label: "About" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact us", cta: true },
 ];
 

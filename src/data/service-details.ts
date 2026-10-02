@@ -347,7 +347,7 @@ export const serviceDetails: ServiceDetailContent[] = [
   {
     slug: "web-development",
     pageTitle: "Web Development",
-    heroBg: "/images/web-coding-hero-premium.jpg",
+    heroBg: "/images/web-hero-bg-coding.jpg",
     intro: [
       "Your website is the heart of your business — it should be beautiful, functional, and built to tell your brand story.",
     ],
