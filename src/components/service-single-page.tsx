@@ -1,14 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
-import { MagButton } from "@/components/interactions";
-import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
+import { GraphicDesignPage } from "@/components/graphic-design-page";
+import { ServiceDetailHero } from "@/components/service-detail-hero";
+import { ServiceNewsletter } from "@/components/service-newsletter";
+import { ServiceStack } from "@/components/service-stack";
 import { ServiceZigzag } from "@/components/service-zigzag";
 import { getServiceDetail } from "@/data/service-details";
 import {
-  getServicesByGroup,
   serviceGroupHref,
-  serviceHref,
   type Service,
   type ServiceGroupMeta,
 } from "@/data/services";
@@ -22,90 +21,116 @@ export function ServiceSinglePage({
 }) {
   const detail = getServiceDetail(service.slug);
   const pageBg = detail?.pageBg;
-  const related = getServicesByGroup(group.id).filter(
-    (s) => s.slug !== service.slug,
-  );
+  const isNonFin = group.id === "non";
+
+  if (service.slug === "graphic-designing") {
+    return <GraphicDesignPage />;
+  }
 
   const content = (
     <>
-      <PageHero
+      <ServiceDetailHero
         title={detail?.pageTitle ?? service.name}
         subtitle={detail?.intro[0] ?? service.summary}
-        imageSrc={pageBg ? undefined : service.image}
-        align="center"
-        actions={
-          <>
-            <MagButton>
-              <Link className="btn gold mag" href="/contact">
-                Book a free consultation
-              </Link>
-            </MagButton>
-            <MagButton>
-              <Link className="btn blue mag" href={serviceGroupHref(group)}>
-                All {group.shortName.toLowerCase()} services
-              </Link>
-            </MagButton>
-          </>
+        imageSrc={
+          detail?.heroBg !== undefined
+            ? detail.heroBg || undefined
+            : service.image
         }
+        groupLabel={group.shortName}
+        groupHref={serviceGroupHref(group)}
+        {...(service.slug === "web-development"
+          ? {
+              primaryCta: {
+                label: "Get Started",
+                href: "/contact",
+                variant: "gold" as const,
+                arrow: true,
+              },
+              secondaryCta: {
+                label: "Watch Our Work",
+                href: "/portfolio",
+                variant: "ghost" as const,
+                play: true,
+              },
+            }
+          : null)}
       />
 
       {detail ? (
-        <ServiceZigzag detail={detail} />
+        isNonFin ? (
+          <>
+            <div className="sec svc-pro-head">
+              <div className="w">
+                <Reveal as="p" className="svc-pro-eyebrow">
+                  Service overview
+                </Reveal>
+                <Reveal as="h2">What we deliver</Reveal>
+                <Reveal as="p" className="sub svc-pro-lead">
+                  {detail.offerLead ??
+                    `Explore the ${service.name.toLowerCase()} work we deliver — clear process, strong craft, and support that helps your brand grow.`}
+                </Reveal>
+              </div>
+            </div>
+            <ServiceStack detail={detail} />
+          </>
+        ) : (
+          <>
+            <div className="sec svc-offer-head">
+              <div className="w">
+                <Reveal as="h2">What We Offer</Reveal>
+                <Reveal as="p" className="sub svc-offer-lead">
+                  {detail.offerLead ??
+                    `Explore the ${service.name.toLowerCase()} services we deliver for growing businesses — clear process, careful compliance, and support that frees you to focus on what matters.`}
+                </Reveal>
+              </div>
+            </div>
+            <ServiceZigzag detail={detail} />
+          </>
+        )
       ) : (
-        <div className="sec">
-          <div className="w svc-single">
-            <div className="svc-single-main">
-              <Reveal className="svc-detail-card svc-single-card">
-                <h2>{service.name}</h2>
-                <p className="svc-detail-summary">{service.summary}</p>
-                <div className="svc-detail-cols">
-                  <div>
-                    <h4>Includes</h4>
-                    <ul>
-                      {service.includes.map((line) => (
-                        <li key={line}>{line}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4>You get</h4>
-                    <ul>
-                      {service.outcomes.map((line) => (
-                        <li key={line}>{line}</li>
-                      ))}
-                    </ul>
+        <div className="sec svc-simple-sec">
+          <div className="w">
+            <Reveal className="svc-detail-card svc-simple-card">
+              <div className="svc-simple-grid">
+                <div className="svc-simple-copy">
+                  <h2>{service.name}</h2>
+                  <p className="svc-detail-summary">{service.summary}</p>
+                  <div className="svc-detail-cols">
+                    <div>
+                      <h4>Includes</h4>
+                      <ul>
+                        {service.includes.map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4>You get</h4>
+                      <ul>
+                        {service.outcomes.map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </Reveal>
-            </div>
+                <div className="svc-simple-media">
+                  <Image
+                    src={service.image}
+                    alt=""
+                    fill
+                    sizes="(max-width:900px) 100vw, 42vw"
+                    className="svc-simple-img"
+                  />
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       )}
 
-      {related.length > 0 ? (
-        <div className="sec alt">
-          <div className="w">
-            <Reveal as="h2">
-              Related {group.shortName.toLowerCase()} services
-            </Reveal>
-            <Reveal as="p" className="sub">
-              Add more from the same team when you are ready.
-            </Reveal>
-            <div className="svc-related">
-              {related.map((item, i) => (
-                <Reveal key={item.slug} delay={`${i * 60}ms`}>
-                  <Link className="svc-related-card" href={serviceHref(item)}>
-                    <div>
-                      <strong>{item.name}</strong>
-                      <p>{item.description}</p>
-                    </div>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      ) : null}
+      <ServiceNewsletter />
     </>
   );
 

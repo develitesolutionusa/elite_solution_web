@@ -120,7 +120,7 @@ export const services: Service[] = [
       "Fewer year-end surprises",
       "Records that support every number",
     ],
-    image: "/images/service-tax.jpg",
+    image: "/images/tax-premium.jpg",
   },
   {
     group: "fin",

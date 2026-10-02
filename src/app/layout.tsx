@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Black_Ops_One, Bricolage_Grotesque, Figtree } from "next/font/google";
-import { CtaBanner, SiteFooter } from "@/components/site-footer";
+import { SiteFooter } from "@/components/site-footer";
 import { PageLoader } from "@/components/page-loader";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { SiteHeader } from "@/components/site-header";
@@ -54,7 +54,6 @@ export default function RootLayout({
         <ScrollProgress />
         <SiteHeader />
         <main className="flex-1">{children}</main>
-        <CtaBanner />
         <SiteFooter />
       </body>
     </html>

@@ -1,19 +1,33 @@
 export const site = {
   name: "Elite Solutions USA",
   shortName: "ELITE SOLUTIONS",
-  tagline: "Comprehensive financial and non-financial services to empower growth and success.",
+  tagline:
+    "Comprehensive financial and non-financial services to empower growth and success.",
   phone: "+1 832-951-2823",
   phoneHref: "tel:+18329512823",
   email: "info@elitesolutionscpa.com",
   website: "https://www.elitesolutionusa.com",
   websiteLabel: "www.elitesolutionusa.com",
   location: "Naperville, Illinois",
+  address: "1493 Fairway Drive, Naperville, Illinois 60563",
   founder: {
     name: "Usman Tehseen",
     qualifications: "ACCA, MBA (Marketing), University of Oxford",
     basedIn: "Naperville, Illinois",
     focus: "Finance, technology, offshore talent and digital growth",
   },
+  social: [
+    {
+      id: "linkedin",
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/elitesolutionusa",
+    },
+    {
+      id: "instagram",
+      label: "Instagram",
+      href: "https://www.instagram.com/elite.solutions3",
+    },
+  ],
 } as const;
 
 export const nav: {

@@ -34,17 +34,21 @@ export function ServiceZigzag({ detail }: { detail: ServiceDetailContent }) {
         const node = card.querySelector<HTMLElement>(".svc-zigzag-node");
         const target = node ?? card;
         const r = target.getBoundingClientRect();
+        const cardR = card.getBoundingClientRect();
         return {
           x: r.left - trackRect.left + r.width / 2,
           y: r.top - trackRect.top + r.height / 2,
+          top: cardR.top - trackRect.top,
+          bottom: cardR.bottom - trackRect.top,
         };
       });
 
+      // Keep connectors in the clear gap between cards — never under a block.
       let d = `M ${points[0].x} ${points[0].y}`;
       for (let i = 1; i < points.length; i++) {
         const prev = points[i - 1];
         const curr = points[i];
-        const midY = (prev.y + curr.y) / 2;
+        const midY = (prev.bottom + curr.top) / 2;
         d += ` L ${prev.x} ${midY} L ${curr.x} ${midY} L ${curr.x} ${curr.y}`;
       }
 
@@ -145,20 +149,22 @@ export function ServiceZigzag({ detail }: { detail: ServiceDetailContent }) {
           return (
             <div key={section.heading} className="svc-zigzag-sec">
               <Reveal
-                className={`svc-zigzag-row${reverse ? " reverse" : ""}`}
+                className={`svc-zigzag-row${reverse ? " reverse" : ""}${section.image ? "" : " text-only"}`}
                 from={reverse ? "right" : "left"}
                 delay={`${Math.min(i * 70, 280)}ms`}
               >
                 <span className="svc-zigzag-node">{i + 1}</span>
-                <div className="svc-zigzag-media">
-                  <Image
-                    src={section.image}
-                    alt=""
-                    fill
-                    sizes="(max-width:900px) 100vw, 48vw"
-                    className="svc-zigzag-img"
-                  />
-                </div>
+                {section.image ? (
+                  <div className="svc-zigzag-media">
+                    <Image
+                      src={section.image}
+                      alt=""
+                      fill
+                      sizes="(max-width:900px) 100vw, 48vw"
+                      className="svc-zigzag-img"
+                    />
+                  </div>
+                ) : null}
                 <div className="svc-zigzag-copy">
                   <h3>{section.heading}</h3>
                   {section.paragraphs.map((p) => (
