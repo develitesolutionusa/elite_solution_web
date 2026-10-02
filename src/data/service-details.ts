@@ -16,7 +16,15 @@ export type ServiceFeatureIcon =
   | "webapp"
   | "ecommerce"
   | "api"
-  | "deploy";
+  | "deploy"
+  | "brand"
+  | "audience"
+  | "content"
+  | "social"
+  | "campaign"
+  | "analytics"
+  | "funnel"
+  | "growth";
 
 export type ServiceDetailFeature = {
   title: string;
@@ -535,6 +543,7 @@ export const serviceDetails: ServiceDetailContent[] = [
   {
     slug: "marketing-strategies",
     pageTitle: "Marketing Strategies",
+    heroBg: "/images/marketing-hero-premium.jpg",
     intro: [
       "We design multi-touch marketing strategies that build brand awareness, accelerate engagement, and drive enduring success.",
     ],
@@ -543,48 +552,127 @@ export const serviceDetails: ServiceDetailContent[] = [
     sections: [
       {
         heading: "Marketing Strategy",
+        image: "/images/marketing-devices-premium.jpg",
         paragraphs: [
-          "At Elite Solutions, we help create brand awareness and development through one-of-a-kind non-financial services. We work on multi-touch marketing strategies — whether crafting a clear plan for your business, improving online visibility, or applying other growth techniques.",
-          "Creative design in marketing depends on how you depict and target your audience. The design must focus deeply to bring traffic to your website and includes everything from branding to advertising.",
+          "At Elite Solutions, we want your business to flourish. We help create brand awareness and development through one-of-a-kind non-financial services. We work on multi-touch marketing strategies — whether crafting a clear plan for your business, improving online visibility, or applying growth techniques that keep your brand top of mind.",
+          "Creative design in marketing depends on how you depict and target your audience. The design must focus deeply to bring traffic to your website and includes everything from branding to advertising — so every message feels intentional, consistent, and ready to convert.",
         ],
       },
       {
-        heading: "Discover your brand",
+        heading: "Complete Marketing Solutions",
         paragraphs: [
-          "We design marketing strategies that initiate growth, accelerate engagement, and bring enduring success.",
+          "From brand positioning to campaigns and analytics, we build the strategy your business needs to grow with confidence.",
         ],
-        specialties: [
+        features: [
           {
-            title: "Brand identity",
-            body: "A unique, memorable presence that helps you stand out.",
+            icon: "brand",
+            title: "Brand Strategy",
+            body: "A distinctive identity and message that helps your business stand out and stay memorable.",
           },
           {
-            title: "Customer connection",
-            body: "More meaningful ways to engage audiences and build loyalty.",
+            icon: "audience",
+            title: "Audience Research",
+            body: "Clear insight into who you serve, what they care about, and where they engage.",
           },
           {
-            title: "Sustainable growth",
-            body: "Strategies for steady, long-term business success.",
+            icon: "content",
+            title: "Content Marketing",
+            body: "Useful content that builds trust, improves visibility, and supports every stage of the journey.",
+          },
+          {
+            icon: "social",
+            title: "Social Media Strategy",
+            body: "Channel plans and creatives that keep your brand active, consistent, and engaging.",
+          },
+          {
+            icon: "campaign",
+            title: "Campaign Planning",
+            body: "Multi-touch campaigns designed to launch offers, build awareness, and drive action.",
+          },
+          {
+            icon: "analytics",
+            title: "Performance Analytics",
+            body: "Tracking and reporting that show what works — so decisions stay data-driven.",
+          },
+          {
+            icon: "funnel",
+            title: "Funnel Optimization",
+            body: "Smoother paths from discovery to inquiry, with clearer CTAs and stronger conversion points.",
+          },
+          {
+            icon: "growth",
+            title: "Growth Roadmaps",
+            body: "Long-term plans for steady, sustainable growth across channels and seasons.",
           },
         ],
       },
       {
-        heading: "Why choose Elite Solutions",
+        heading: "From Insight to Impact",
         paragraphs: [
-          "Are you ready to take your brand to the next level? We focus on real, measurable growth and meaningful customer interactions.",
+          "We keep the marketing process simple, collaborative, and focused on measurable results.",
         ],
-        steps: [
+        process: [
           {
-            title: "Expertise",
-            body: "Years of experience delivering effective marketing solutions.",
+            icon: "discuss",
+            title: "Discover Your Brand",
+            body: "We learn your goals, audience, and competitive landscape.",
           },
           {
-            title: "Customization",
-            body: "Strategies matched to your goals and audience.",
+            icon: "design",
+            title: "Plan Strategy",
+            body: "We build a clear marketing plan matched to your budget and priorities.",
           },
           {
-            title: "Results-driven",
-            body: "Real, measurable growth and meaningful interactions.",
+            icon: "develop",
+            title: "Execute Campaigns",
+            body: "We launch content, creatives, and campaigns across the right channels.",
+          },
+          {
+            icon: "launch",
+            title: "Measure & Optimize",
+            body: "We track performance and refine for stronger engagement and growth.",
+          },
+        ],
+      },
+      {
+        heading: "Featured Projects",
+        paragraphs: [
+          "Take a look at some of the marketing work we've delivered for growing brands.",
+        ],
+        ctaLabel: "View All Projects",
+        ctaHref: "/portfolio",
+        projects: [
+          {
+            title: "Brand Identity Campaign",
+            description:
+              "A full brand refresh with messaging and visuals that made the business feel premium, clear, and ready to scale.",
+            image: "/images/marketing-project-brand.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Social Growth Engine",
+            description:
+              "A social content system that increased engagement and kept the brand consistent across every post and story.",
+            image: "/images/marketing-project-social.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Product Launch Push",
+            description:
+              "A coordinated launch campaign across digital and outdoor touchpoints that built awareness fast and drove inquiries.",
+            image: "/images/marketing-project-launch.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Content & Email System",
+            description:
+              "A content and newsletter program that nurtured leads with useful stories and clear next steps.",
+            image: "/images/marketing-project-content.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
           },
         ],
       },
@@ -593,6 +681,7 @@ export const serviceDetails: ServiceDetailContent[] = [
   {
     slug: "seo-services",
     pageTitle: "SEO Services",
+    heroBg: "/images/seo-hero-premium.jpg",
     intro: [
       "Boost your visibility, attract the right audience, and grow your business with smart SEO solutions that drive real organic traffic.",
     ],
@@ -601,48 +690,127 @@ export const serviceDetails: ServiceDetailContent[] = [
     sections: [
       {
         heading: "SEO Services",
+        image: "/images/seo-devices-premium.jpg",
         paragraphs: [
-          "At Elite Solutions, we give personalized support to grow your brand — whether creating an impactful marketing strategy or building a robust online presence. SEO Services help boost your visibility, attract the right audience, and grow your business with smart solutions.",
-          "Trigger your online existence and drive real organic traffic with our SEO strategies.",
+          "If you are looking for top-rated SEO services near you, Elite Solutions is here to help your business grow. We give personalized support to grow your brand — whether creating an impactful marketing strategy or building a robust online presence — with SEO solutions that boost visibility, attract the right audience, and drive success.",
+          "Trigger your online presence and drive real organic traffic with our SEO strategies. From authentic area-wise keyword research to content optimization and ongoing performance tracking, we tailor every plan to your niche and goals — and stay ahead of trends so your rankings keep moving the right way.",
         ],
       },
       {
-        heading: "Which includes",
+        heading: "Complete SEO Solutions",
         paragraphs: [
-          "We tailor every strategy to suit your business’s niche and goals, staying ahead of trends to optimize your visibility.",
+          "From keywords and technical health to content and tracking, we cover everything you need to rank higher and convert more visitors.",
         ],
-        specialties: [
+        features: [
           {
-            title: "Keyword research",
-            body: "Area-wise research and implementation that fits your market.",
+            icon: "audience",
+            title: "Keyword Research",
+            body: "Area-wise research and targeting that matches how your customers actually search.",
           },
           {
-            title: "Content optimization",
-            body: "Pages structured to answer what buyers search for.",
+            icon: "frontend",
+            title: "On-Page SEO",
+            body: "Titles, structure, and page signals optimized so search engines understand your offer.",
           },
           {
-            title: "Performance tracking",
-            body: "Ongoing adjustments based on real results.",
+            icon: "database",
+            title: "Technical SEO",
+            body: "Site speed, crawlability, and structure fixes that keep Google able to find and index you.",
+          },
+          {
+            icon: "content",
+            title: "Content Optimization",
+            body: "Pages and posts shaped to answer buyer intent and earn stronger organic visibility.",
+          },
+          {
+            icon: "brand",
+            title: "Local SEO",
+            body: "Local presence and map visibility that help nearby customers find your business.",
+          },
+          {
+            icon: "social",
+            title: "Link Building",
+            body: "Quality authority signals that strengthen trust and support long-term rankings.",
+          },
+          {
+            icon: "analytics",
+            title: "Rank Tracking",
+            body: "Ongoing performance tracking and adjustments based on real search results.",
+          },
+          {
+            icon: "growth",
+            title: "SEO Audits",
+            body: "Clear audits that uncover issues, priorities, and the fastest path to growth.",
           },
         ],
       },
       {
-        heading: "Why choose Elite Solutions",
+        heading: "From Audit to Higher Rankings",
         paragraphs: [
-          "Ready to rank higher? We focus on rankings, driving traffic, and increasing conversions.",
+          "We keep SEO simple, transparent, and focused on traffic and conversions that matter.",
         ],
-        steps: [
+        process: [
           {
-            title: "Expertise",
-            body: "SEO specialists who stay ahead of trends.",
+            icon: "discuss",
+            title: "Audit & Discover",
+            body: "We review your site, competitors, and search opportunities.",
           },
           {
-            title: "Customization",
-            body: "Strategies tailored to your niche and goals.",
+            icon: "design",
+            title: "Strategy & Keywords",
+            body: "We build a keyword and content plan matched to your goals.",
           },
           {
-            title: "Results-driven",
-            body: "Rankings, traffic, and conversions that matter.",
+            icon: "develop",
+            title: "Optimize & Publish",
+            body: "We improve pages, technical health, and on-site signals.",
+          },
+          {
+            icon: "launch",
+            title: "Track & Grow",
+            body: "We monitor rankings and refine for stronger traffic and conversions.",
+          },
+        ],
+      },
+      {
+        heading: "Featured Projects",
+        paragraphs: [
+          "Take a look at some of the SEO results and systems we've built for clients.",
+        ],
+        ctaLabel: "View All Projects",
+        ctaHref: "/portfolio",
+        projects: [
+          {
+            title: "Local Search Growth",
+            description:
+              "A local SEO program that improved map visibility and brought more nearby customers to the business.",
+            image: "/images/seo-project-local.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "E-Commerce Rankings",
+            description:
+              "Product and category SEO that lifted organic traffic and helped shoppers find the right items faster.",
+            image: "/images/seo-project-ecommerce.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Content Traffic Engine",
+            description:
+              "A content SEO system that turned search intent into steady organic visits and stronger brand authority.",
+            image: "/images/seo-project-content.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Technical SEO Fix",
+            description:
+              "A full technical audit and cleanup that improved crawl health, speed, and index coverage.",
+            image: "/images/seo-project-technical.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
           },
         ],
       },
@@ -651,6 +819,7 @@ export const serviceDetails: ServiceDetailContent[] = [
   {
     slug: "email-marketing",
     pageTitle: "Email Marketing",
+    heroBg: "/images/email-hero-premium.jpg",
     intro: [
       "Personalized email campaigns that connect, convert, and grow your customer base — one of the most effective ways to engage customers.",
     ],
@@ -659,48 +828,127 @@ export const serviceDetails: ServiceDetailContent[] = [
     sections: [
       {
         heading: "Email Marketing",
+        image: "/images/email-devices-premium.jpg",
         paragraphs: [
-          "At Elite Solutions, we’re here to help your business thrive. Whether creating smart marketing strategies or building a solid online presence, we provide customized support to grow your brand every step of the way.",
-          "We create personalized email promotions that connect, convert, and grow your customer base — engaging customers and increasing sales with specified email campaigns.",
+          "At Elite Solutions, we're here to help your business thrive. Whether creating smart marketing strategies or building a solid online presence, we provide customized support to grow your brand every step of the way — and email is one of the strongest channels to keep customers connected.",
+          "We create personalized email promotions that connect, convert, and grow your customer base. From compelling content to targeted lists and measurable campaigns, we help you engage customers and increase sales with email programs built around your audience and goals.",
         ],
       },
       {
-        heading: "We provide",
+        heading: "Complete Email Marketing Solutions",
         paragraphs: [
-          "From crafting compelling email content to building targeted lists, we help you achieve impactful, measurable results.",
+          "From welcome flows to promos and reporting, we build email systems that keep your brand in the inbox and your pipeline moving.",
         ],
-        specialties: [
+        features: [
           {
-            title: "Email content",
-            body: "Personalized copy that connects and converts.",
+            icon: "content",
+            title: "Email Content Creation",
+            body: "Personalized copy and layouts that connect with readers and drive clear action.",
           },
           {
-            title: "Targeted lists",
-            body: "Building and managing lists for clearer reach.",
+            icon: "audience",
+            title: "List Building & Segmentation",
+            body: "Targeted customer lists so the right message reaches the right people.",
           },
           {
-            title: "Measurable loyalty",
-            body: "Campaigns that drive engagement and repeat business.",
+            icon: "campaign",
+            title: "Campaign Design",
+            body: "On-brand promotional emails for launches, offers, and seasonal pushes.",
+          },
+          {
+            icon: "funnel",
+            title: "Automation Flows",
+            body: "Welcome, nurture, and follow-up sequences that work while you focus on the business.",
+          },
+          {
+            icon: "brand",
+            title: "Newsletter Programs",
+            body: "Regular updates that build loyalty and keep your audience engaged over time.",
+          },
+          {
+            icon: "ecommerce",
+            title: "Promotional Emails",
+            body: "Sales and offer campaigns designed to convert without feeling spammy.",
+          },
+          {
+            icon: "analytics",
+            title: "Performance Reporting",
+            body: "Open, click, and conversion tracking so every send shows measurable impact.",
+          },
+          {
+            icon: "growth",
+            title: "Retention & Loyalty",
+            body: "Emails that bring customers back and strengthen long-term relationships.",
           },
         ],
       },
       {
-        heading: "Why choose Elite Solutions",
+        heading: "From Strategy to Every Send",
         paragraphs: [
-          "Ready to connect? Let’s power up your email strategy with campaigns tailored to your audience and goals.",
+          "We keep email marketing simple, tailored, and focused on engagement you can measure.",
         ],
-        steps: [
+        process: [
           {
-            title: "Expertise",
-            body: "Compelling campaigns that drive engagement.",
+            icon: "discuss",
+            title: "Define Goals",
+            body: "We clarify your audience, offers, and what success should look like.",
           },
           {
-            title: "Customization",
-            body: "Tailored to your audience and goals.",
+            icon: "design",
+            title: "Craft & Segment",
+            body: "We create content and lists matched to your brand and buyers.",
           },
           {
-            title: "Results-driven",
-            body: "Measurable impact with every send.",
+            icon: "develop",
+            title: "Launch Campaigns",
+            body: "We set up sends, automations, and schedules ready to go live.",
+          },
+          {
+            icon: "launch",
+            title: "Measure & Improve",
+            body: "We track results and refine for stronger opens, clicks, and conversions.",
+          },
+        ],
+      },
+      {
+        heading: "Featured Projects",
+        paragraphs: [
+          "Take a look at some of the email programs we've built to connect and convert.",
+        ],
+        ctaLabel: "View All Projects",
+        ctaHref: "/portfolio",
+        projects: [
+          {
+            title: "Welcome Series",
+            description:
+              "An onboarding email flow that introduces the brand and turns new subscribers into engaged customers.",
+            image: "/images/email-project-welcome.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Promo Campaign Pack",
+            description:
+              "A set of promotional emails that highlight offers clearly and drive stronger click-through and sales.",
+            image: "/images/email-project-promo.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Brand Newsletter",
+            description:
+              "A recurring newsletter system that keeps audiences informed and builds loyalty month after month.",
+            image: "/images/email-project-newsletter.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Automation Drips",
+            description:
+              "Automated nurture sequences that follow up at the right time and keep the funnel moving.",
+            image: "/images/email-project-automation.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
           },
         ],
       },
@@ -709,6 +957,7 @@ export const serviceDetails: ServiceDetailContent[] = [
   {
     slug: "help-line-services",
     pageTitle: "Help Line Services",
+    heroBg: "/images/helpline-hero-premium.jpg",
     intro: [
       "Dedicated helpline support that addresses inquiries, resolves issues quickly, and keeps customers satisfied.",
     ],
@@ -717,48 +966,127 @@ export const serviceDetails: ServiceDetailContent[] = [
     sections: [
       {
         heading: "Help Line Services",
+        image: "/images/helpline-devices-premium.jpg",
         paragraphs: [
-          "At Elite Solutions, our dedication is directed toward your business success. From building an efficient marketing plan to increasing your online presence, we help you expand and maintain a strong brand for the long term.",
-          "Deliver exceptional customer support and ensure satisfaction with our dedicated helpline services — reliable solutions that keep customers supported at all times.",
+          "At Elite Solutions, our dedication is directed toward your business success. From building an efficient marketing plan to increasing your online presence, we help you expand and maintain a strong brand for the long term — and great support is part of that promise.",
+          "Deliver exceptional customer support and ensure satisfaction with our dedicated helpline services. We provide reliable, responsive assistance that keeps customers supported at all times, resolves issues quickly, and builds trust with every conversation.",
         ],
       },
       {
-        heading: "We offer",
+        heading: "Complete Helpline Solutions",
         paragraphs: [
-          "Our team is committed to delivering professional, responsive assistance customized to your business’s needs.",
+          "From phone lines and chat to tickets and quality checks, we cover the support channels your customers expect.",
         ],
-        specialties: [
+        features: [
           {
-            title: "Support lines",
-            body: "Dedicated channels ready for customer inquiries.",
+            icon: "campaign",
+            title: "Dedicated Support Lines",
+            body: "Branded phone support channels ready for customer inquiries and day-to-day questions.",
           },
           {
-            title: "Quick resolution",
-            body: "Issues handled promptly to keep satisfaction high.",
+            icon: "social",
+            title: "Live Chat Support",
+            body: "Real-time chat help that answers customers quickly while they are already on your site.",
           },
           {
-            title: "Trusted experience",
-            body: "Seamless support that builds loyalty over time.",
+            icon: "content",
+            title: "Ticket Management",
+            body: "Organized ticket handling so every issue is tracked, prioritized, and closed cleanly.",
+          },
+          {
+            icon: "funnel",
+            title: "Quick Issue Resolution",
+            body: "Clear processes that resolve problems promptly and keep satisfaction high.",
+          },
+          {
+            icon: "audience",
+            title: "Multichannel Support",
+            body: "Phone, chat, and email support that feels consistent across every contact point.",
+          },
+          {
+            icon: "deploy",
+            title: "After-Hours Coverage",
+            body: "Extended or after-hours support so customers are not left waiting when you are offline.",
+          },
+          {
+            icon: "analytics",
+            title: "Quality Monitoring",
+            body: "Call and chat reviews that protect service quality and improve agent performance.",
+          },
+          {
+            icon: "growth",
+            title: "Customer Satisfaction",
+            body: "Support experiences designed to build loyalty, trust, and long-term retention.",
           },
         ],
       },
       {
-        heading: "Why choose Elite Solutions",
+        heading: "From Setup to Seamless Support",
         paragraphs: [
-          "Ready to elevate your support? We focus on enhancing customer satisfaction and trust.",
+          "We keep helpline onboarding simple, customized, and focused on faster answers for your customers.",
         ],
-        steps: [
+        process: [
           {
-            title: "Expertise",
-            body: "Professional, responsive customer support.",
+            icon: "discuss",
+            title: "Understand Needs",
+            body: "We learn your products, common questions, and support priorities.",
           },
           {
-            title: "Customization",
-            body: "Helpline services matched to your needs.",
+            icon: "design",
+            title: "Set Up Channels",
+            body: "We configure phone, chat, and ticket flows matched to your brand.",
           },
           {
-            title: "Results-driven",
-            body: "Stronger satisfaction and lasting trust.",
+            icon: "develop",
+            title: "Train & Launch",
+            body: "We prepare scripts, workflows, and agents — then go live with confidence.",
+          },
+          {
+            icon: "launch",
+            title: "Monitor & Improve",
+            body: "We track response quality and refine support for stronger satisfaction.",
+          },
+        ],
+      },
+      {
+        heading: "Featured Projects",
+        paragraphs: [
+          "Take a look at some of the support setups we've delivered for growing teams.",
+        ],
+        ctaLabel: "View All Projects",
+        ctaHref: "/portfolio",
+        projects: [
+          {
+            title: "Phone Support Desk",
+            description:
+              "A dedicated phone helpline that answers inquiries quickly and keeps customers connected to the brand.",
+            image: "/images/helpline-project-phone.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Live Chat Desk",
+            description:
+              "Website chat support that resolves questions in real time and reduces drop-off during browsing.",
+            image: "/images/helpline-project-chat.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Ticket Operations",
+            description:
+              "A ticket system that organizes issues, speeds up resolution, and keeps every request accountable.",
+            image: "/images/helpline-project-tickets.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
+          },
+          {
+            title: "Customer Success Line",
+            description:
+              "A success-focused support model that builds trust and turns service moments into loyalty.",
+            image: "/images/helpline-project-success.jpg",
+            href: "/portfolio",
+            linkLabel: "View project",
           },
         ],
       },

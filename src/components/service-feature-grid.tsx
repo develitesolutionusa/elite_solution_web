@@ -96,6 +96,80 @@ function FeatureIcon({ name }: { name: ServiceFeatureIcon }) {
           <path d="M17.5 19a4.5 4.5 0 0 0 .5-9 7 7 0 0 0-13.5 2A4 4 0 0 0 6 19z" />
         </svg>
       );
+    case "brand":
+      return (
+        <svg {...common}>
+          {defs}
+          <path d="M12 3 14.5 8.5 20.5 9.3 16 13.5 17.2 19.5 12 16.7 6.8 19.5 8 13.5 3.5 9.3 9.5 8.5 12 3z" />
+        </svg>
+      );
+    case "audience":
+      return (
+        <svg {...common}>
+          {defs}
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      );
+    case "content":
+      return (
+        <svg {...common}>
+          {defs}
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <path d="M14 2v6h6" />
+          <path d="M8 13h8" />
+          <path d="M8 17h6" />
+        </svg>
+      );
+    case "social":
+      return (
+        <svg {...common}>
+          {defs}
+          <circle cx="18" cy="5" r="3" />
+          <circle cx="6" cy="12" r="3" />
+          <circle cx="18" cy="19" r="3" />
+          <path d="m8.6 13.5 6.8 4" />
+          <path d="m15.4 6.5-6.8 4" />
+        </svg>
+      );
+    case "campaign":
+      return (
+        <svg {...common}>
+          {defs}
+          <path d="M3 11v2a2 2 0 0 0 2 2h2l5 4V5L7 9H5a2 2 0 0 0-2 2z" />
+          <path d="M16 9.5a3.5 3.5 0 0 1 0 5" />
+          <path d="M18.5 7a6.5 6.5 0 0 1 0 10" />
+        </svg>
+      );
+    case "analytics":
+      return (
+        <svg {...common}>
+          {defs}
+          <path d="M4 19V5" />
+          <path d="M4 19h16" />
+          <path d="M8 16v-5" />
+          <path d="M12 16V8" />
+          <path d="M16 16v-8" />
+          <path d="M20 16v-3" />
+        </svg>
+      );
+    case "funnel":
+      return (
+        <svg {...common}>
+          {defs}
+          <path d="M3 4h18l-7 8v6l-4 2v-8L3 4z" />
+        </svg>
+      );
+    case "growth":
+      return (
+        <svg {...common}>
+          {defs}
+          <path d="M3 17 9 11l4 4 8-8" />
+          <path d="M14 7h7v7" />
+        </svg>
+      );
     default:
       return null;
   }
