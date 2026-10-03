@@ -39,11 +39,6 @@ export const careersPage = {
         title: "Growth Opportunities",
         body: "Skills valued. Growth encouraged.",
       },
-      {
-        icon: "flex",
-        title: "Make a Difference",
-        body: "Every day is a chance to contribute.",
-      },
     ],
     image: "/images/careers-hero-team.jpg",
   },

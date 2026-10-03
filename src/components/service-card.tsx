@@ -7,13 +7,15 @@ import { serviceHref, type Service } from "@/data/services";
 export function ServiceCard({
   service,
   delay,
+  showMore = true,
 }: {
   service: Service;
   delay?: string;
+  showMore?: boolean;
 }) {
   return (
     <Reveal as="div" delay={delay} className="svc-card-wrap">
-      <TiltCard className="svc-grid-card">
+      <TiltCard className={`svc-grid-card${showMore ? "" : " svc-grid-card-plain"}`}>
         <Link className="service-card-link" href={serviceHref(service)}>
           <div className="svc-grid-media">
             <Image
@@ -27,7 +29,9 @@ export function ServiceCard({
           <div className="svc-grid-body">
             <h3>{service.name}</h3>
             <p>{service.description}</p>
-            <span className="service-card-more">View details</span>
+            {showMore ? (
+              <span className="service-card-more">View details</span>
+            ) : null}
           </div>
         </Link>
       </TiltCard>
@@ -38,9 +42,11 @@ export function ServiceCard({
 export function ServiceGrid({
   items,
   columns = 3,
+  showMore = true,
 }: {
   items: Service[];
   columns?: 2 | 3 | 4;
+  showMore?: boolean;
 }) {
   const colClass =
     columns === 2 ? " c2" : columns === 4 ? " c4" : "";
@@ -52,6 +58,7 @@ export function ServiceGrid({
           key={service.slug}
           service={service}
           delay={`${i * 70}ms`}
+          showMore={showMore}
         />
       ))}
     </div>

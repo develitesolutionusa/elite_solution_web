@@ -38,13 +38,6 @@ function ValueIcon({ name }: { name: CareersValueIcon }) {
           <path d="M14 8h6v6" />
         </svg>
       );
-    case "flex":
-      return (
-        <svg {...svgCommon}>
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <path d="M3 10h18" />
-        </svg>
-      );
   }
 }
 
