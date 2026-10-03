@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Black_Ops_One, Bricolage_Grotesque, Figtree } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { PageLoader } from "@/components/page-loader";
@@ -45,17 +46,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${head.variable} ${body.variable} ${heroDisplay.variable} h-full`}
-    >
-      <body className="min-h-full flex flex-col">
-        <PageLoader />
-        <ScrollProgress />
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        data-theme="dark"
+        className={`${head.variable} ${body.variable} ${heroDisplay.variable} h-full`}
+      >
+        <body className="min-h-full flex flex-col">
+          <PageLoader />
+          <ScrollProgress />
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

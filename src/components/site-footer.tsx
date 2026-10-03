@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 import { serviceGroupHref, serviceGroups } from "@/data/services";
 import { nav, site } from "@/data/site";
 
@@ -40,7 +41,9 @@ export function SiteFooter() {
       <div className="w">
         <div className="ft">
           <div className="ft-brand">
-            <strong>{site.name}</strong>
+            <Link className="ft-brand-link" href="/" aria-label="Elite Solution home">
+              <BrandLogo />
+            </Link>
             <p>{site.tagline}</p>
             <p className="ft-loc">{site.address}</p>
             <div className="ft-social" aria-label="Social media">

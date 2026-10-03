@@ -41,7 +41,7 @@ export const nav: {
   { href: "/about", label: "About" },
   { href: "/pricing", label: "Pricing" },
   { href: "/careers", label: "Careers" },
-  { href: "/contact", label: "Contact us", cta: true },
+  { href: "/contact", label: "Get Started", cta: true },
 ];
 
 export const heroWords = [

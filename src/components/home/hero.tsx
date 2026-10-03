@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { HeroBrandRise } from "@/components/home/hero-brand-rise";
 import { MagButton, SpotSurface } from "@/components/interactions";
 import { Typewriter } from "@/components/typewriter";
 import { site } from "@/data/site";
@@ -20,7 +21,14 @@ function ParticleNet() {
     const RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let W = 0;
     let H = 0;
-    let P: { x: number; y: number; vx: number; vy: number; g: boolean; r: number }[] = [];
+    let P: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      g: boolean;
+      r: number;
+    }[] = [];
     const m = { x: -999, y: -999 };
     let vis = true;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -136,43 +144,8 @@ function ParticleNet() {
 }
 
 export function HomeHero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      video.pause();
-      return;
-    }
-    const play = () => {
-      void video.play().catch(() => {});
-    };
-    play();
-    const onVis = () => {
-      if (document.hidden) video.pause();
-      else play();
-    };
-    document.addEventListener("visibilitychange", onVis);
-    return () => document.removeEventListener("visibilitychange", onVis);
-  }, []);
-
   return (
     <SpotSurface className="dk hero" id="hero">
-      <div className="hero-bg" aria-hidden="true">
-        <video
-          ref={videoRef}
-          className="hero-bg-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/images/hero-bg.jpg"
-        >
-          <source src="/videos/hero-bg-scrub.mp4?v=4" type="video/mp4" />
-        </video>
-      </div>
       <div className="orbw" aria-hidden="true">
         <div className="orb o1" />
         <div className="orb o2" />
@@ -198,6 +171,9 @@ export function HomeHero() {
               </Link>
             </MagButton>
           </div>
+        </div>
+        <div className="hero-visual enter e4">
+          <HeroBrandRise />
         </div>
       </div>
       <div className="scrollcue" aria-hidden="true" />

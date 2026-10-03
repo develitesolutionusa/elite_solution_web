@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/contact/contact-form";
-import { PageHero } from "@/components/page-hero";
+import { ContactStudioPage } from "@/components/contact-studio-page";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -9,13 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return (
-    <>
-      <PageHero
-        title="Book a free consultation"
-        subtitle="Tell us what you need and we will reply with a plan and a quote."
-      />
-      <ContactForm />
-    </>
-  );
+  return <ContactStudioPage />;
 }

@@ -86,9 +86,6 @@ export function ContactForm() {
                 Send message
               </button>
             </MagButton>
-            <p className="note">
-              This opens your email app with the message filled in.
-            </p>
           </form>
         </Reveal>
       </div>
