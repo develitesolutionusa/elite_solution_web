@@ -4,7 +4,10 @@ import { aboutPage } from "@/data/about-page";
 import { financialServices, nonFinancialServices } from "@/data/services";
 import { site } from "@/data/site";
 
-const featuredPortfolio = portfolioStudioPage.projects.slice(0, 3);
+const featuredIds = ["hussain-catering", "burger-buz", "butt-karahi"];
+const featuredPortfolio = featuredIds.map((id) =>
+  portfolioStudioPage.projects.find((project) => project.id === id),
+).filter((project) => project != null);
 
 export const homePage = {
   hero: {
@@ -15,7 +18,7 @@ export const homePage = {
     primaryHref: "/contact",
     secondaryLabel: "Explore Services",
     secondaryHref: "/services",
-    image: "/images/services-hero-agency.jpg",
+    image: "/images/home-hero-consultation.jpg",
   },
   services: {
     eyebrow: "What We Do",
@@ -60,7 +63,7 @@ export const homePage = {
     stats: aboutPage.stats.slice(0, 3),
     ctaLabel: "About Elite Solutions",
     ctaHref: "/about",
-    image: aboutPage.story.image,
+    image: "/images/about-team-meeting-dark.jpg",
   },
   portfolio: {
     eyebrow: portfolioStudioPage.hero.eyebrow,
@@ -71,7 +74,6 @@ export const homePage = {
     ctaHref: "/portfolio",
     projects: featuredPortfolio.map((p) => ({
       title: p.title,
-      category: p.categoryLabel,
       body: p.description,
       image: p.image,
       href: p.href,

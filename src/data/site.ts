@@ -9,7 +9,7 @@ export const site = {
   website: "https://www.elitesolutionusa.com",
   websiteLabel: "www.elitesolutionusa.com",
   location: "Naperville, Illinois",
-  address: "1493 Fairway Drive, Naperville, Illinois 60563",
+  address: "Naperville, Illinois 60563",
   founder: {
     name: "Usman Tehseen",
     qualifications: "ACCA, MBA (Marketing), University of Oxford",

@@ -52,10 +52,9 @@ export function ServiceSinglePage({
                 arrow: true,
               },
               secondaryCta: {
-                label: "Watch Our Work",
+                label: "See client results",
                 href: "/portfolio",
                 variant: "ghost" as const,
-                play: true,
               },
             }
           : null)}

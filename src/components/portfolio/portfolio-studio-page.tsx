@@ -2,23 +2,31 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { MagButton } from "@/components/interactions";
+import { useEffect, useState } from "react";
+import { MagButton, TiltCard } from "@/components/interactions";
 import { Reveal } from "@/components/reveal";
 import {
-  portfolioStudioFilters,
   portfolioStudioPage,
-  type PortfolioStudioFilterId,
+  type PortfolioStudioProject,
 } from "@/data/portfolio-page";
 
 export function PortfolioStudioPage() {
   const { hero, projects, process, cta } = portfolioStudioPage;
-  const [filter, setFilter] = useState<PortfolioStudioFilterId>("all");
+  const [active, setActive] = useState<PortfolioStudioProject | null>(null);
 
-  const filtered = useMemo(() => {
-    if (filter === "all") return projects;
-    return projects.filter((p) => p.category === filter);
-  }, [filter, projects]);
+  useEffect(() => {
+    if (!active) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActive(null);
+    };
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [active]);
 
   return (
     <div className="pf-studio">
@@ -51,55 +59,46 @@ export function PortfolioStudioPage() {
 
       <section className="sec pf-work">
         <div className="w">
-          <div className="pf-filters" role="tablist" aria-label="Portfolio filters">
-            {portfolioStudioFilters.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                aria-selected={filter === item.id}
-                className={`pf-filter${filter === item.id ? " on" : ""}`}
-                onClick={() => setFilter(item.id)}
-              >
-                {item.label}
-              </button>
-            ))}
+          <div className="pf-process-head">
+            <Reveal as="p" className="pf-eyebrow">
+              Our Clients
+            </Reveal>
+            <Reveal>
+              <h2 className="pf-title">Client Success Stories</h2>
+            </Reveal>
           </div>
 
-          {filtered.length === 0 ? (
-            <div className="pf-empty">
-              <h3>No projects in this category yet</h3>
-              <p>Completed projects will appear here soon.</p>
-            </div>
-          ) : (
-            <ul className="pf-grid">
-              {filtered.map((project, i) => (
+          <ul className="pf-grid">
+              {projects.map((project, i) => (
                 <Reveal
                   key={project.id}
                   as="li"
-                  className="pf-card"
+                  className="pf-card-slot"
                   delay={`${Math.min(i * 50, 250)}ms`}
                 >
-                  <div className="pf-card-media">
-                    <Image
-                      src={project.image}
-                      alt=""
-                      fill
-                      sizes="(max-width:900px) 100vw, 33vw"
-                      className="pf-card-img"
-                    />
-                  </div>
-                  <strong className="pf-card-title">{project.title}</strong>
-                  <span className="pf-card-cat">{project.categoryLabel}</span>
-                  <p className="pf-card-body">{project.description}</p>
-                  <Link className="pf-card-link" href={project.href}>
-                    View Project
-                    <span aria-hidden="true"> →</span>
-                  </Link>
+                  <TiltCard className="pf-card">
+                    <div className="pf-card-media">
+                      <Image
+                        src={project.image}
+                        alt=""
+                        fill
+                        sizes="(max-width:900px) 100vw, 33vw"
+                        className={`pf-card-img${project.imageFit === "contain" ? " fit-contain" : ""}`}
+                      />
+                    </div>
+                    <h3 className="pf-card-title">{project.title}</h3>
+                    <p className="pf-card-body">{project.description}</p>
+                    <button
+                      type="button"
+                      className="pf-card-btn"
+                      onClick={() => setActive(project)}
+                    >
+                      View details
+                    </button>
+                  </TiltCard>
                 </Reveal>
               ))}
-            </ul>
-          )}
+          </ul>
         </div>
       </section>
 
@@ -171,6 +170,57 @@ export function PortfolioStudioPage() {
           </Reveal>
         </div>
       </section>
+
+      {active ? (
+        <div
+          className="pf-detail"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="pf-detail-title"
+          onClick={() => setActive(null)}
+        >
+          <article className="pf-card pf-detail-card" onClick={(event) => event.stopPropagation()}>
+            <div className="pf-card-media">
+              <Image
+                src={active.image}
+                alt=""
+                fill
+                sizes="640px"
+                className={`pf-card-img${active.imageFit === "contain" ? " fit-contain" : ""}`}
+              />
+            </div>
+            <h3 id="pf-detail-title" className="pf-card-title">
+              {active.title}
+            </h3>
+            <div className="pf-detail-copy">
+              {active.details ? (
+                <>
+                  <p>{active.details.intro}</p>
+                  {active.details.sections.map((section) => (
+                    <section key={section.heading}>
+                      <h4>{section.heading}</h4>
+                      {section.paragraphs?.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                      {section.items?.map((item) => (
+                        <p key={item.label}>
+                          <strong>{item.label}: </strong>
+                          {item.text}
+                        </p>
+                      ))}
+                    </section>
+                  ))}
+                </>
+              ) : (
+                <p>{active.description}</p>
+              )}
+            </div>
+            <button type="button" className="pf-card-btn" onClick={() => setActive(null)}>
+              Close
+            </button>
+          </article>
+        </div>
+      ) : null}
     </div>
   );
 }

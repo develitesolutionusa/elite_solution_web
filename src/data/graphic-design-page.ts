@@ -5,7 +5,7 @@ export const graphicDesignPage = {
     titleGold: "Visuals",
     lead: "We craft logos, brand systems, and marketing creatives that make your business look sharp, memorable, and ready to grow.",
     primaryCta: { label: "Get Started", href: "/contact" },
-    secondaryCta: { label: "Watch Our Work", href: "/portfolio" },
+    secondaryCta: { label: "See client results", href: "/portfolio" },
     visual: "/images/graphic-hero-bg-premium.jpg",
   },
   services: {

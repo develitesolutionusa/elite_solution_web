@@ -39,8 +39,8 @@ export const contactPage = {
         icon: "location" as ContactChannelIcon,
         label: "Office",
         value: site.address,
-        href: "https://maps.google.com/?q=1493+Fairway+Drive,+Naperville,+Illinois+60563",
-        hint: site.location,
+        href: `https://maps.google.com/?q=${encodeURIComponent(site.address)}`,
+        hint: "",
       },
       {
         icon: "hours" as ContactChannelIcon,

@@ -52,22 +52,6 @@ function HighlightIcon({ name }: { name: PricingHighlightIcon }) {
   }
 }
 
-function CheckIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
-
 function NonFinIcon({ name }: { name: PricingNonFinIcon }) {
   const common = {
     viewBox: "0 0 24 24",
@@ -135,7 +119,7 @@ function NonFinIcon({ name }: { name: PricingNonFinIcon }) {
 }
 
 export function PricingStudioPage() {
-  const { hero, discovery, financial, nonFinancial, faq } = pricingPage;
+  const { hero, discovery, nonFinancial, faq } = pricingPage;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -225,54 +209,6 @@ export function PricingStudioPage() {
                 <span aria-hidden="true"> →</span>
               </Link>
             </MagButton>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="sec price-financial">
-        <div className="w">
-          <div className="price-sec-head">
-            <Reveal as="p" className="price-eyebrow">
-              {financial.eyebrow}
-            </Reveal>
-            <Reveal>
-              <h2 className="price-title">{financial.title}</h2>
-            </Reveal>
-            <Reveal as="p" className="price-lead" delay="60ms">
-              {financial.lead}
-            </Reveal>
-          </div>
-          <Reveal className="price-financial-panel">
-            <div className="price-financial-head">
-              <div className="price-financial-head-top">
-                <span className="price-financial-badge">{financial.badge}</span>
-                <span className="price-financial-meta">
-                  {financial.features.length} included services
-                </span>
-              </div>
-              <h3 className="price-financial-title">{financial.panelTitle}</h3>
-              <p className="price-financial-lead">{financial.panelLead}</p>
-            </div>
-            <div className="price-financial-divider" aria-hidden="true" />
-            <ul className="price-financial-features">
-              {financial.features.map((feature) => (
-                <li key={feature}>
-                  <span className="price-financial-check" aria-hidden="true">
-                    <CheckIcon />
-                  </span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="price-financial-divider" aria-hidden="true" />
-            <div className="price-financial-foot">
-              <MagButton>
-                <Link className="btn gold mag" href={financial.ctaHref}>
-                  {financial.ctaLabel}
-                  <span aria-hidden="true"> →</span>
-                </Link>
-              </MagButton>
-            </div>
           </Reveal>
         </div>
       </section>

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { ServiceFeatureGrid } from "@/components/service-feature-grid";
-import { ServiceFeaturedProjects } from "@/components/service-featured-projects";
 import { ServiceProcess } from "@/components/service-process";
 import { ServiceSteps } from "@/components/service-steps";
 import type { ServiceDetailContent } from "@/data/service-details";
@@ -24,12 +23,13 @@ export function ServiceStack({ detail }: { detail: ServiceDetailContent }) {
       ) : null}
 
       <div className="w svc-pro-list">
-        {detail.sections.map((section, i) => {
+        {detail.sections
+          .filter((section) => !section.projects?.length)
+          .map((section, i) => {
           const hasSteps = Boolean(section.steps?.length);
           const hasSpecialties = Boolean(section.specialties?.length);
           const hasFeatures = Boolean(section.features?.length);
           const hasProcess = Boolean(section.process?.length);
-          const hasProjects = Boolean(section.projects?.length);
 
           if (hasProcess) {
             return (
@@ -45,24 +45,6 @@ export function ServiceStack({ detail }: { detail: ServiceDetailContent }) {
                   ctaLabel={section.ctaLabel}
                   ctaHref={section.ctaHref}
                   steps={section.process!}
-                />
-              </Reveal>
-            );
-          }
-
-          if (hasProjects) {
-            return (
-              <Reveal
-                key={section.heading}
-                className="svc-pro-section has-projects"
-                delay={`${Math.min(i * 50, 200)}ms`}
-              >
-                <ServiceFeaturedProjects
-                  heading={section.heading}
-                  lead={section.paragraphs[0] ?? ""}
-                  ctaLabel={section.ctaLabel}
-                  ctaHref={section.ctaHref}
-                  projects={section.projects!}
                 />
               </Reveal>
             );

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { site } from "@/data/site";
 
 export function PageLoader() {
   const [show, setShow] = useState(true);
@@ -24,7 +23,7 @@ export function PageLoader() {
       <div className="loader-in">
         <div className="loader-mark">
           <span className="loader-glow" />
-          <div className="loader-logo-wrap">
+          <div className="loader-plate">
             <Image
               src="/images/elite-logo.png"
               alt=""
@@ -33,10 +32,8 @@ export function PageLoader() {
               priority
               className="loader-logo"
             />
-            <span className="loader-shine" />
           </div>
         </div>
-        <b className="loader-name">{site.name}</b>
         <span className="loader-line" />
       </div>
     </div>

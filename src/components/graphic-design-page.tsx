@@ -135,7 +135,7 @@ function GradientTitle({
 }
 
 export function GraphicDesignPage() {
-  const { hero, services, projects, process } = graphicDesignPage;
+  const { hero, services, process } = graphicDesignPage;
 
   return (
     <div className="gfx-studio">
@@ -171,9 +171,6 @@ export function GraphicDesignPage() {
               </MagButton>
               <MagButton>
                 <Link className="btn ghost mag gfx-hero-ghost" href={hero.secondaryCta.href}>
-                  <span className="gfx-play" aria-hidden="true">
-                    ▶
-                  </span>
                   {hero.secondaryCta.label}
                 </Link>
               </MagButton>
@@ -206,49 +203,6 @@ export function GraphicDesignPage() {
                 <span className="gfx-service-arrow" aria-hidden="true">
                   →
                 </span>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="sec gfx-projects">
-        <div className="w">
-          <Reveal className="gfx-sec-head">
-            <h2 className="gfx-title">
-              <span className="gfx-title-accent">{projects.title}</span>
-            </h2>
-          </Reveal>
-          <ul className="gfx-projects-grid">
-            {projects.items.map((project, i) => (
-              <Reveal
-                key={project.title}
-                as="li"
-                className="gfx-project"
-                delay={`${Math.min(i * 60, 240)}ms`}
-              >
-                <article className="gfx-project-card">
-                  <div className="gfx-project-media">
-                    <Image
-                      src={project.image}
-                      alt=""
-                      fill
-                      sizes="(max-width:900px) 90vw, 25vw"
-                      className="gfx-project-img"
-                    />
-                    <span className="gfx-project-tag">{project.category}</span>
-                    <div className="gfx-project-live-wrap">
-                      <Link className="gfx-project-live" href={project.href}>
-                        Live
-                        <span aria-hidden="true">↗</span>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="gfx-project-body">
-                    <strong>{project.title}</strong>
-                    <p>{project.subtitle}</p>
-                  </div>
-                </article>
               </Reveal>
             ))}
           </ul>

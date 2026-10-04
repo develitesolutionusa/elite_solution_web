@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MagButton } from "@/components/interactions";
+import { MagButton, TiltCard } from "@/components/interactions";
 import { Reveal } from "@/components/reveal";
 import { ServiceGrid } from "@/components/service-card";
 import { Typewriter } from "@/components/typewriter";
@@ -85,6 +85,17 @@ export function HomeStudioPage() {
 
       <section className="sec home-about" id="about">
         <div className="w home-about-grid">
+          <Reveal className="home-about-visual" delay="80ms">
+            <div className="home-about-frame">
+              <Image
+                src={about.image}
+                alt=""
+                fill
+                sizes="(max-width:980px) 100vw, 46vw"
+                className="home-about-img"
+              />
+            </div>
+          </Reveal>
           <div className="home-about-copy">
             <Reveal as="p" className="home-eyebrow">
               {about.eyebrow}
@@ -98,15 +109,7 @@ export function HomeStudioPage() {
             <Reveal as="p" className="home-lead" delay="80ms">
               {about.lead}
             </Reveal>
-            <ul className="home-about-points">
-              {about.points.map((point, i) => (
-                <Reveal as="li" key={point.title} delay={`${100 + i * 60}ms`}>
-                  <strong>{point.title}</strong>
-                  <span>{point.body}</span>
-                </Reveal>
-              ))}
-            </ul>
-            <Reveal className="home-actions" delay="220ms">
+            <Reveal className="home-actions" delay="120ms">
               <MagButton>
                 <Link className="btn gold mag" href={about.ctaHref}>
                   {about.ctaLabel}
@@ -115,25 +118,6 @@ export function HomeStudioPage() {
               </MagButton>
             </Reveal>
           </div>
-          <Reveal className="home-about-visual" delay="120ms">
-            <div className="home-about-frame">
-              <Image
-                src={about.image}
-                alt=""
-                fill
-                sizes="(max-width:900px) 100vw, 42vw"
-                className="home-about-img"
-              />
-            </div>
-            <ul className="home-about-stats">
-              {about.stats.map((stat) => (
-                <li key={stat.label}>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
         </div>
       </section>
 
@@ -157,31 +141,32 @@ export function HomeStudioPage() {
             {portfolio.projects.map((project, i) => (
               <li key={project.title}>
                 <Reveal delay={`${i * 70}ms`}>
-                  <Link className="home-pf-card" href={project.href}>
-                    <div className="home-pf-media">
-                      <Image
-                        src={project.image}
-                        alt=""
-                        fill
-                        sizes="(max-width:900px) 100vw, 33vw"
-                        className="home-pf-img"
-                      />
-                    </div>
-                    <span className="home-pf-cat">{project.category}</span>
-                    <strong className="home-pf-title">{project.title}</strong>
-                    <p className="home-pf-body">{project.body}</p>
-                    <span className="home-pf-link">
-                      View project
-                      <span aria-hidden="true"> →</span>
-                    </span>
-                  </Link>
+                  <TiltCard className="home-pf-card">
+                    <Link className="home-pf-card-link" href={project.href}>
+                      <div className="home-pf-media">
+                        <Image
+                          src={project.image}
+                          alt=""
+                          fill
+                          sizes="(max-width:900px) 100vw, 33vw"
+                          className="home-pf-img"
+                        />
+                      </div>
+                      <strong className="home-pf-title">{project.title}</strong>
+                      <p className="home-pf-body">{project.body}</p>
+                      <span className="home-pf-link">
+                        View project
+                        <span aria-hidden="true"> →</span>
+                      </span>
+                    </Link>
+                  </TiltCard>
                 </Reveal>
               </li>
             ))}
           </ul>
           <Reveal className="home-sec-cta">
             <MagButton>
-              <Link className="btn ghost mag" href={portfolio.ctaHref}>
+              <Link className="btn gold mag" href={portfolio.ctaHref}>
                 {portfolio.ctaLabel}
                 <span aria-hidden="true"> →</span>
               </Link>

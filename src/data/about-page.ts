@@ -9,7 +9,7 @@ export const aboutPage = {
   },
   story: {
     eyebrow: "About Us",
-    title: "We Aren't Just Accountants — We're Your Success Partners",
+    title: "From a Small Idea to a Growing Digital Partner",
     paragraphs: [
       "Elite Solutions offers small business owners specialized, customized accounting and financial services. From financial guidance, bookkeeping, fiscal reporting, payroll processing to tax submissions, we assist you in getting your business operationally smooth and lawful.",
       "In addition, we create and implement strategic marketing plans that are aligned with your business' goals, enabling you to reach your desired audience efficiently. We also provide personalized tax services for individuals, meticulously managing all financial aspects with accuracy and diligence.",
@@ -17,7 +17,7 @@ export const aboutPage = {
     ],
     ctaLabel: "Our Journey",
     ctaHref: "/portfolio",
-    image: "/images/about-story-square.jpg",
+    image: "/images/about-lobby-logo-wall.jpg",
   },
   stats: [
     { icon: "clients", value: "50k+", label: "Users Worldwide" },

@@ -45,7 +45,6 @@ export function SiteFooter() {
               <BrandLogo />
             </Link>
             <p>{site.tagline}</p>
-            <p className="ft-loc">{site.address}</p>
             <div className="ft-social" aria-label="Social media">
               {site.social.map((item) => (
                 <a
@@ -91,13 +90,26 @@ export function SiteFooter() {
 
           <div className="ft-col">
             <h3>Contact</h3>
-            <div className="fl">
-              <a href={site.phoneHref}>{site.phone}</a>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
-              <a href={site.website} target="_blank" rel="noreferrer">
-                {site.websiteLabel}
-              </a>
-            </div>
+            <ul className="ft-contact">
+              <li>
+                <span>Phone</span>
+                <a href={site.phoneHref}>{site.phone}</a>
+              </li>
+              <li>
+                <span>Email</span>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </li>
+              <li>
+                <span>Office</span>
+                <p>{site.address}</p>
+              </li>
+              <li>
+                <span>Web</span>
+                <a href={site.website} target="_blank" rel="noreferrer">
+                  {site.websiteLabel}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
